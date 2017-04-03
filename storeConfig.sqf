@@ -1257,6 +1257,21 @@ colorsArray = compileFinal str
 			["Rusty (Hatchback)", [[0, _wreckDir + "civilcar_extwreck_co.paa"]]]
 		]
 	],
+	[ // GOD EMPEROR
+ 		"B_MBT_01_cannon_F",
+ 		[
+ 			["Trump (Slammer)", [
+ 				[0, _texDir + "slammer_trump_0.paa"],
+ 				[1, _texDir + "slammer_trump_1.paa"]
+ 			]]
+ 		]
+ 	],
+ 	[
+ 		"B_MBT_01_TUSK_F",
+ 		[
+ 			["Trump (Slammer)", [[2, _texDir + "slammer_trump_2.paa"]]]
+ 		]
+ 	],
 	[ // RHIB paintjob
  		"Boat_Transport_02_base_F",
  		[
@@ -1359,7 +1374,7 @@ customPlayerItems = compileFinal str
 
 donatorItems = compileFinal str
 [
-"H_MilCap_blue",
+/*"H_MilCap_blue",
 "H_MilCap_gry",
 "H_MilCap_oucamo",
 "H_MilCap_rucamo",
@@ -1466,20 +1481,20 @@ donatorItems = compileFinal str
 "G_Squares",
 "G_Tactical_Clear",
 "G_Tactical_Black",
-"G_Spectacles_Tinted"
+"G_Spectacles_Tinted"*/
 ];
 
 //Put all gun, ammo, or general item classes in this list if you only want them only accessible through missions (this list will not add these items to mission crates, do that manually)
 missionOnlyItems = compileFinal str
 [
-"srifle_GM6_F",
-"srifle_GM6_camo_F",
-"srifle_GM6_ghex_F",
-"MMG_02_sand_F",
-"MMG_02_camo_F",
-"MMG_02_black_F",
-"MMG_01_tan_F",
-"MMG_01_hex_F",
+//"srifle_GM6_F",
+//"srifle_GM6_camo_F",
+//"srifle_GM6_ghex_F",
+//"MMG_02_sand_F",
+//"MMG_02_camo_F",
+//"MMG_02_black_F",
+//"MMG_01_tan_F",
+//"MMG_01_hex_F",
 "Titan_AT",
 "Titan_AP",
 "Laserdesignator",
@@ -1488,9 +1503,14 @@ missionOnlyItems = compileFinal str
 "optic_tws",
 "optic_tws_mg",
 "optic_Nightstalker",
-"B_UAV_01_backpack_F",
-"O_UAV_01_backpack_F",
-"I_UAV_01_backpack_F"
+"H_HelmetO_ViperSP_hex_F",
+"H_HelmetO_ViperSP_ghex_F",
+"NVGogglesB_gry_F",
+"NVGogglesB_blk_F",
+"NVGogglesB_grn_F"
+//"B_UAV_01_backpack_F",
+//"O_UAV_01_backpack_F",
+//"I_UAV_01_backpack_F"
 ];
 
 call compile preprocessFileLineNumbers "mapConfig\storeOwners.sqf";
