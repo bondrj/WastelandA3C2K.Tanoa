@@ -101,7 +101,7 @@ _perpetrator = effectiveCommander _killer;
 _unit setVariable ["FAR_killerPrimeSuspectData", [getPlayerUID _perpetrator, group _perpetrator, side group _perpetrator, name _perpetrator], true];
 //[_unit, _killer] remoteExecCall ["A3W_fnc_registerKillScore", 2];
 
-diag_log format ["INCAPACITATED by [%1] with [%2]", _killer, _unit getVariable ["FAR_killerAmmo", ""]];
+diag_log format ["INCAPACITADO por [%1] com [%2]", _killer, _unit getVariable ["FAR_killerAmmo", ""]];
 
 _unit setDamage 0.5;
 _unit setVariable ["FAR_reviveModeReady", true];
@@ -345,7 +345,7 @@ while {UNCONSCIOUS(_unit) && diag_tickTime < _bleedOut} do
 
 				if (_unit == player) then
 				{
-					_progText ctrlSetText "Being treated...";
+					_progText ctrlSetText "Sendo tratado...";
 				};
 			};
 
@@ -382,7 +382,7 @@ while {UNCONSCIOUS(_unit) && diag_tickTime < _bleedOut} do
 
 			if (isNil "_treatedBy") then
 			{
-				_progText ctrlSetText "Stabilized";
+				_progText ctrlSetText "Estabilizado";
 			};
 
 			//(FAR_cutTextLayer + 1) cutText [format ["\n\nYou have been stabilized\n\n%1", call FAR_CheckFriendlies], "PLAIN DOWN", 0.01];

@@ -15,11 +15,11 @@ FAR_Player_Actions =
 		// addAction args: title, filename, (arguments, priority, showWindow, hideOnUse, shortcut, condition, positionInModel, radius, radiusView, showIn3D, available, textDefault, textToolTip)
 		{ [player, _x] call fn_addManagedAction } forEach
 		[
-			["<t color='#FF0000'>" + "Finish off" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_slay"], 101, true, true, "", FAR_Check_Slay],
-			["<t color='#00FF00'>" + "Revive" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_revive"], 100, true, true, "", FAR_Check_Revive],
-			["<t color='#00FF00'>" + "Stabilize" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_stabilize"], 99, true, true, "", FAR_Check_Stabilize],
-			["<t color='#FFFF00'>" + "Drag" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_drag"], 98, true, true, "", FAR_Check_Dragging],
-			["<t color='#FFFF00'>" + "Eject injured units from vehicle" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_eject"], 5.2, false, true, "", FAR_Check_Eject_Injured]
+			["<t color='#FF0000'>" + "Matar" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_slay"], 101, true, true, "", FAR_Check_Slay],
+			["<t color='#00FF00'>" + "Reviver" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_revive"], 100, true, true, "", FAR_Check_Revive],
+			["<t color='#00FF00'>" + "Estabilizar" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_stabilize"], 99, true, true, "", FAR_Check_Stabilize],
+			["<t color='#FFFF00'>" + "Arrastar" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_drag"], 98, true, true, "", FAR_Check_Dragging],
+			["<t color='#FFFF00'>" + "Retirar amigo ferido do veículo" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_eject"], 5.2, false, true, "", FAR_Check_Eject_Injured]
 		];
 	};
 }
@@ -122,7 +122,7 @@ FAR_Drag =
 {
 	if (primaryWeapon player == "") exitWith
 	{
-		titleText ["You need a primary weapon to be able to drag,\notherwise your player will freeze.\n(Arma 3 bug)", "PLAIN DOWN", 0.5];
+		titleText ["Você precisa de uma arma primária para ser capaz de arrastar,\Se não for o caso, o seu aparelho congelará.\n(Arma 3 bug)", "PLAIN DOWN", 0.5];
 	};
 
 	FAR_isDragging = true;
@@ -149,11 +149,11 @@ FAR_Drag =
 	// Add release action and save its id so it can be removed
 	_actions =
 	[
-		[player, ["<t color='#FFFF00'>" + "Load unit in vehicle" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_load"], 103, true, true, "", FAR_Check_Load_Dragged]] call fn_addManagedAction,
-		player addAction ["<t color='#FF0000'>" + "Release" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_release"], 102]
+		[player, ["<t color='#FFFF00'>" + "Colocar amigo no veículo" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_load"], 103, true, true, "", FAR_Check_Load_Dragged]] call fn_addManagedAction,
+		player addAction ["<t color='#FF0000'>" + "Liberar" + "</t>", "addons\FAR_revive\FAR_handleAction.sqf", ["action_release"], 102]
 	];
 
-	titleText [format ["Press %1 (%2) if you can't move back.", (actionKeysNamesArray "TactToggle") param [0,"<UNDEFINED>"], actionName "TactToggle"], "PLAIN DOWN", 0.5];
+	titleText [format ["Pressione %1 (%2) se você não pode voltar.", (actionKeysNamesArray "TactToggle") param [0,"<UNDEFINED>"], actionName "TactToggle"], "PLAIN DOWN", 0.5];
 	player selectWeapon primaryWeapon player;
 
 	// Drag & Carry animation fix
@@ -283,11 +283,11 @@ FAR_public_EH =
 			{
 				if (_killerName isEqualTo []) then
 				{
-					systemChat format ["%1 was injured", toString _unitName];
+					systemChat format ["%1 Foi Ferido", toString _unitName];
 				}
 				else
 				{
-					systemChat format ["%1 injured%3 %2%4", toString _killerName, toString _unitName, [""," teammate"] select _friendlyFire, [""," with vehicle collision"] select _roadInjured];					
+					systemChat format ["%1 Feriu o%3 %2%4", toString _killerName, toString _unitName, [""," amigo do time"] select _friendlyFire, [""," com colisão de veículo"] select _roadInjured];					
 				};
 			};
 		};
@@ -444,7 +444,7 @@ FAR_CheckFriendlies =
 	private ["_units", "_msg", "_medics", "_medicsText", "_dir", "_cardinal"];
 
 	_units = player nearEntities ["AllVehicles", 1000];
-	_msg = "<t underline='true'>Nearby medics</t>"; // Non-breaking space (Alt+255) between "nearby" and "medics", otherwise the underline is split between the 2 words
+	_msg = "<t underline='true'>Médicos nas proximidades</t>"; // Non-breaking space (Alt+255) between "nearby" and "medics", otherwise the underline is split between the 2 words
 	_medics = [];
 	_medicsText = "";
 
